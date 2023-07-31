@@ -146,20 +146,21 @@ namespace cpr
         return hosts_[protocol];
     }
 
-    const char* ProxyAuthentication::operator[](const std::string& protocol)
-    {
-        if (proxyAuth_.count(protocol) == 0)
-        {
-            FAIL("ProxyAuthentication: No entry '" << protocol << "' available");
-        }
-        return proxyAuth_[protocol].GetAuthString();
-    }
+    // const char* ProxyAuthentication::operator[](const std::string& protocol)
+    // {
+    //     if (proxyAuth_.count(protocol) == 0)
+    //     {
+    //         FAIL("ProxyAuthentication: No entry '" << protocol << "' available");
+    //     }
+    //     return proxyAuth_[protocol].GetAuthString();
+    // }
+
 
     EncodedAuthentication::~EncodedAuthentication() noexcept = default;
 
-    const char* EncodedAuthentication::GetAuthString() const noexcept
-    {
-        return auth_string_.c_str();
-    }
+    // const char* EncodedAuthentication::GetUsername() const noexcept
+    // {
+    //     return username.c_str();
+    // }
 
 }

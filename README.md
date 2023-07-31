@@ -1,10 +1,16 @@
+# deps
+
+1. Catch2 develop
+2. trompeloeil
+
+> For now, they are all installed instead of referred as projects.
+
 # influxdb-cxx
 
 [![CI](https://github.com/offa/influxdb-cxx/workflows/ci/badge.svg)](https://github.com/offa/influxdb-cxx/actions)
 [![GitHub release](https://img.shields.io/github/release/offa/influxdb-cxx.svg)](https://github.com/offa/influxdb-cxx/releases)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 ![C++](https://img.shields.io/badge/c++-17-green.svg)
-
 
 InfluxDB C++ client library
  - Batch write

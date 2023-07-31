@@ -20,9 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#define CATCH_CONFIG_MAIN // This should come **before** including the 'catch.hpp'.
+
 #include "HTTP.h"
 #include "InfluxDBException.h"
 #include "mock/CprMock.h"
+// #include <catch2/catch.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/trompeloeil.hpp>
 
@@ -238,7 +241,7 @@ namespace influxdb::test
         auto http = createHttp();
 
         REQUIRE_CALL(sessionMock, SetProxies(_)).WITH(_1["http"] == std::string{"https://auth-proxy-server:1234"} && _1["https"] == std::string{"https://auth-proxy-server:1234"});
-        REQUIRE_CALL(sessionMock, SetProxyAuth(_)).WITH(_1["http"] == std::string{"abc:def"} && _1["https"] == std::string{"abc:def"});
+        REQUIRE_CALL(sessionMock, SetProxyAuth(_)).WITH(_1.GetUsername("http") == std::string{"abc"} && _1.GetPassword("http")  == std::string{"def"} && _1.GetUsername("https") == std::string{"abc"} && _1.GetPassword("https") == std::string{"def"});
 
         http.setProxy(Proxy{"https://auth-proxy-server:1234", Proxy::Auth{"abc", "def"}});
     }
